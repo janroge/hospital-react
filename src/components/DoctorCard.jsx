@@ -1,3 +1,4 @@
+import { memo } from "react";
 import PropTypes from "prop-types";
 import withClickLogger from "./withClickLogger"; // Importamos el HOC
 
@@ -10,7 +11,6 @@ const DoctorCard = ({ doctor, onClick }) => {
   );
 };
 
-// Validación de las props
 DoctorCard.propTypes = {
   doctor: PropTypes.shape({
     nombre: PropTypes.string.isRequired,
@@ -19,7 +19,7 @@ DoctorCard.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
 
-// Envolvemos el componente con el HOC
-const WrappedDoctorCard = withClickLogger(DoctorCard);
+// Aplica memo y el HOC con un nombre explícito
+const EnhancedDoctorCard = memo(withClickLogger(DoctorCard));
 
-export default WrappedDoctorCard; // Exportamos el componente envuelto
+export default EnhancedDoctorCard; // Exporta el componente con nombre explícito

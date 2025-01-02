@@ -1,10 +1,10 @@
+import { memo } from "react";
 import { useContext } from "react";
 import { DoctorContext } from "./DoctorContext";
 import DoctorCard from "./DoctorCard";
-import PropTypes from "prop-types";
 
 const DoctorList = () => {
-  const { setSelectedDoctor } = useContext(DoctorContext); // Usamos el contexto
+  const { setSelectedDoctor } = useContext(DoctorContext);
   const doctores = [
     { nombre: "Dr. Juan Pérez", especialidad: "Cardiología", disponibilidad: ["Lunes", "Miércoles", "Viernes"] },
     { nombre: "Dra. Ana Gómez", especialidad: "Neurología", disponibilidad: ["Martes", "Jueves"] },
@@ -16,16 +16,11 @@ const DoctorList = () => {
         <DoctorCard
           key={index}
           doctor={doctor}
-          onClick={() => setSelectedDoctor(doctor)} // Actualizamos el contexto
+          onClick={() => setSelectedDoctor(doctor)}
         />
       ))}
     </div>
   );
 };
 
-// Validación del contexto
-DoctorList.propTypes = {
-  setSelectedDoctor: PropTypes.func,
-};
-
-export default DoctorList;
+export default memo(DoctorList); // Usamos memo
