@@ -1,91 +1,80 @@
 # Proyecto del Hospital - ReactJS
 
-Este proyecto implementa una aplicación web simple usando **ReactJS**. Contiene componentes reutilizables como tarjetas de doctores, una lista de servicios y un formulario interactivo para agendar citas.
+Este proyecto es parte de la **Evaluación M4 - Ejercicio Práctico 2**, donde se implementa una aplicación React para manejar funcionalidades específicas relacionadas con un sistema hospitalario. Se realizaron los siguientes puntos según lo solicitado en el archivo PDF:
 
 ---
 
-## 🚀 Características
+## Características Implementadas
 
-1. **DoctorCard**: Componente que muestra información de un doctor, incluyendo nombre, especialidad y años de experiencia.
-2. **ServiceList**: Componente que renderiza una lista de servicios médicos.
-3. **AppointmentForm**: Formulario que permite agendar citas, manejado con el hook `useState`.
-4. **Validación de Props**: Uso de `PropTypes` para garantizar la integridad de las props.
-5. **Renderizado Dinámico**: Implementación de `map()` para listas de datos.
+### 1. Manejo del DOM Virtual
+- Se utiliza React para gestionar eficientemente el DOM virtual.
+- Los componentes se renderizan dinámicamente según los datos.
+
+### 2. Referencias en React
+- Uso de referencias (`useRef`) para manipular directamente elementos del DOM.
+- Ejemplo: Enfocar automáticamente un campo en el formulario de citas.
+
+### 3. Fragmentos y Contexto
+- Uso de `<React.Fragment>` para evitar elementos innecesarios en el DOM.
+- Implementación de un contexto global (`DoctorContext`) para compartir datos entre componentes como la selección de un doctor.
+
+### 4. Verificación de Tipos con PropTypes
+- Validación de props en todos los componentes principales (`DoctorCard`, `DoctorList`, `AppointmentForm`, etc.).
+- PropTypes asegura que los datos enviados a los componentes tengan los tipos correctos.
+
+### 5. Componentes de Orden Superior (HOC) y Portales
+- Creación de un HOC (`withClickLogger`) para registrar clics en componentes.
+- Uso de portales (`Modal`) para mostrar un modal con detalles del doctor seleccionado.
+
+### 6. Optimización de Rendimiento
+- Uso de `React.memo` para evitar renders innecesarios en componentes clave como `DoctorCard` y `DoctorList`.
+- Implementación del `Profiler` para medir tiempos de renderización y detectar cuellos de botella.
 
 ---
 
-## 🛠️ Tecnologías Utilizadas
-
-- **ReactJS**: Biblioteca para interfaces de usuario.
-- **Vite**: Herramienta de desarrollo rápido.
-- **PropTypes**: Validación de props.
-- **CSS**: Estilizado básico.
-
----
-
-## 📊 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```plaintext
 src/
 ├── components/
-│   ├── DoctorCard.jsx      # Componente para tarjeta de doctor
-│   ├── DoctorList.jsx      # Lista de tarjetas de doctores
-│   ├── ServiceList.jsx     # Componente para la lista de servicios
-│   └── AppointmentForm.jsx # Formulario para agendar citas
+│   ├── AppointmentForm.jsx  # Formulario para agendar citas
+│   ├── DoctorCard.jsx       # Tarjetas individuales de doctores
+│   ├── DoctorContext.jsx    # Contexto global para la aplicación
+│   ├── DoctorDetail.jsx     # Detalles del doctor seleccionado
+│   ├── DoctorList.jsx       # Listado de doctores
+│   ├── DoctorProvider.jsx   # Proveedor del contexto
+│   ├── Modal.jsx            # Modal implementado con Portales
+│   ├── ServiceList.jsx      # Listado de servicios
+│   └── withClickLogger.jsx  # HOC para registrar clics
 │
-├── App.jsx                 # Componente principal
-└── main.jsx                # Punto de entrada
+├── App.jsx                  # Componente principal
+├── App.css                  # Estilos principales
+├── index.css                # Estilos globales
+├── main.jsx                 # Punto de entrada
+└── Modal.css                # Estilos para el modal
 ```
 
 ---
 
-## 🛠️ Instalación y Ejecución
+## Instalación y Ejecución
 
-Sigue estos pasos para instalar y ejecutar el proyecto localmente:
-
-1. **Clona el repositorio**:
+1. **Clonar el repositorio:**
    ```bash
-   git clone https://github.com/tu-usuario/hospital-react.git
+   git clone https://github.com/janroge/hospital-react.git
    cd hospital-react
    ```
 
-2. **Instala las dependencias**:
+2. **Instalar dependencias:**
    ```bash
    npm install
    ```
 
-3. **Inicia el servidor de desarrollo**:
+3. **Iniciar el servidor de desarrollo:**
    ```bash
    npm run dev
    ```
 
-4. **Abre la aplicación en el navegador**:
-   ```plaintext
-   http://localhost:5173
-   ```
+4. **Abrir la aplicación:**
+   - URL: `http://localhost:5173`
 
 ---
-
-## 📚 Uso del Proyecto
-
-### Formulario de Citas
-Completa los campos del formulario (nombre del paciente, doctor y fecha) y haz clic en "Agendar Cita". Los datos ingresados se mostrarán en la consola del navegador.
-
-Ejemplo:
-```plaintext
-Datos del formulario: { patientName: "Juan Pérez", doctorName: "Dr. López", appointmentDate: "2024-06-07" }
-```
-
----
-
-## 💳 Licencia
-
-Este proyecto está bajo la licencia **MIT**.
-
----
-
-## 👤 Autor
-
-- **Nombre**: Jorge Rojas
-- **Curso**: Módulo 4 - Front End con React
-- **Repositorio GitHub**: [Enlace al repositorio](https://github.com/janroge/hospital-react)
