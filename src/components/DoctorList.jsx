@@ -1,7 +1,9 @@
-import PropTypes from "prop-types";
+import { useContext } from "react";
+import { DoctorContext } from "./DoctorContext";
 import DoctorCard from "./DoctorCard";
 
-const DoctorList = ({ onSelectDoctor }) => {
+const DoctorList = () => {
+  const { setSelectedDoctor } = useContext(DoctorContext); // Usamos el contexto
   const doctores = [
     { nombre: "Dr. Juan Pérez", especialidad: "Cardiología", disponibilidad: ["Lunes", "Miércoles", "Viernes"] },
     { nombre: "Dra. Ana Gómez", especialidad: "Neurología", disponibilidad: ["Martes", "Jueves"] },
@@ -13,16 +15,11 @@ const DoctorList = ({ onSelectDoctor }) => {
         <DoctorCard
           key={index}
           doctor={doctor}
-          onClick={() => onSelectDoctor(doctor)}
+          onClick={() => setSelectedDoctor(doctor)} // Actualizamos el contexto
         />
       ))}
     </div>
   );
-};
-
-// Validación de las props
-DoctorList.propTypes = {
-  onSelectDoctor: PropTypes.func.isRequired,
 };
 
 export default DoctorList;

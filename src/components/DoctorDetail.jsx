@@ -1,27 +1,21 @@
-import PropTypes from "prop-types";
+import { useContext } from "react";
+import { DoctorContext } from "./DoctorContext";
 
-const DoctorDetail = ({ doctor }) => {
-  if (!doctor) {
+const DoctorDetail = () => {
+  const { selectedDoctor } = useContext(DoctorContext); // Usamos el contexto
+
+  if (!selectedDoctor) {
     return <p>Selecciona un doctor para ver los detalles.</p>;
   }
 
   return (
     <div className="doctor-detail">
       <h2>Detalles del Doctor</h2>
-      <p><strong>Nombre:</strong> {doctor.nombre}</p>
-      <p><strong>Especialidad:</strong> {doctor.especialidad}</p>
-      <p><strong>Disponibilidad:</strong> {doctor.disponibilidad.join(", ")}</p>
+      <p><strong>Nombre:</strong> {selectedDoctor.nombre}</p>
+      <p><strong>Especialidad:</strong> {selectedDoctor.especialidad}</p>
+      <p><strong>Disponibilidad:</strong> {selectedDoctor.disponibilidad.join(", ")}</p>
     </div>
   );
-};
-
-// Validación de las props
-DoctorDetail.propTypes = {
-  doctor: PropTypes.shape({
-    nombre: PropTypes.string.isRequired,
-    especialidad: PropTypes.string.isRequired,
-    disponibilidad: PropTypes.arrayOf(PropTypes.string).isRequired,
-  }),
 };
 
 export default DoctorDetail;

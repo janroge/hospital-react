@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 function ServiceList({ services }) {
   if (!services || services.length === 0) {
@@ -6,14 +6,15 @@ function ServiceList({ services }) {
   }
 
   return (
-    <div>
+    <>
+      {/* Usamos Fragmentos para evitar un div extra */}
       <h2>Lista de Servicios</h2>
       <ul>
         {services.map((service, index) => (
           <li key={index}>{service}</li>
         ))}
       </ul>
-    </div>
+    </>
   );
 }
 
