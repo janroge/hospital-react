@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { DoctorContext } from "./DoctorContext";
+import PropTypes from "prop-types";
 
 const DoctorDetail = () => {
   const { selectedDoctor } = useContext(DoctorContext); // Usamos el contexto
@@ -16,6 +17,15 @@ const DoctorDetail = () => {
       <p><strong>Disponibilidad:</strong> {selectedDoctor.disponibilidad.join(", ")}</p>
     </div>
   );
+};
+
+// Validación del contexto recibido
+DoctorDetail.propTypes = {
+  selectedDoctor: PropTypes.shape({
+    nombre: PropTypes.string.isRequired,
+    especialidad: PropTypes.string.isRequired,
+    disponibilidad: PropTypes.arrayOf(PropTypes.string).isRequired,
+  }),
 };
 
 export default DoctorDetail;

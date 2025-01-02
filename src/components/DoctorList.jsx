@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { DoctorContext } from "./DoctorContext";
 import DoctorCard from "./DoctorCard";
+import PropTypes from "prop-types";
 
 const DoctorList = () => {
   const { setSelectedDoctor } = useContext(DoctorContext); // Usamos el contexto
@@ -20,6 +21,11 @@ const DoctorList = () => {
       ))}
     </div>
   );
+};
+
+// Validación del contexto
+DoctorList.propTypes = {
+  setSelectedDoctor: PropTypes.func,
 };
 
 export default DoctorList;
