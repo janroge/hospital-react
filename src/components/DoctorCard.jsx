@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import withClickLogger from "./withClickLogger"; // Importamos el HOC
 
 const DoctorCard = ({ doctor, onClick }) => {
   return (
@@ -18,4 +19,7 @@ DoctorCard.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
 
-export default DoctorCard;
+// Envolvemos el componente con el HOC
+const WrappedDoctorCard = withClickLogger(DoctorCard);
+
+export default WrappedDoctorCard; // Exportamos el componente envuelto

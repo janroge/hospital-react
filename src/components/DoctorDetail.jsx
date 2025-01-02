@@ -1,31 +1,29 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { DoctorContext } from "./DoctorContext";
-import PropTypes from "prop-types";
+import Modal from "./Modal";
 
 const DoctorDetail = () => {
   const { selectedDoctor } = useContext(DoctorContext); // Usamos el contexto
+  const [isModalOpen, setModalOpen] = useState(false);
 
   if (!selectedDoctor) {
     return <p>Selecciona un doctor para ver los detalles.</p>;
   }
 
   return (
-    <div className="doctor-detail">
-      <h2>Detalles del Doctor</h2>
-      <p><strong>Nombre:</strong> {selectedDoctor.nombre}</p>
-      <p><strong>Especialidad:</strong> {selectedDoctor.especialidad}</p>
-      <p><strong>Disponibilidad:</strong> {selectedDoctor.disponibilidad.join(", ")}</p>
+    <div>
+      <button onClick={() => setModalOpen(true)}>Ver Detalles</button>
+
+      {isModalOpen && (
+        <Modal onClose={() => setModalOpen(false)}>
+          <h2>Detalles del Doctor</h2>
+          <p><strong>Nombre:</strong> {selectedDoctor.nombre}</p>
+          <p><strong>Especialidad:</strong> {selectedDoctor.especialidad}</p>
+          <p><strong>Disponibilidad:</strong> {selectedDoctor.disponibilidad.join(", ")}</p>
+        </Modal>
+      )}
     </div>
   );
-};
-
-// Validación del contexto recibido
-DoctorDetail.propTypes = {
-  selectedDoctor: PropTypes.shape({
-    nombre: PropTypes.string.isRequired,
-    especialidad: PropTypes.string.isRequired,
-    disponibilidad: PropTypes.arrayOf(PropTypes.string).isRequired,
-  }),
 };
 
 export default DoctorDetail;
