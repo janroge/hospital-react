@@ -1,32 +1,28 @@
-import DoctorList from './components/DoctorList'; // Lista de doctores
-import ServiceList from './components/ServiceList'; // Lista de servicios
-import AppointmentForm from './components/AppointmentForm'; // Formulario de citas
+import Header from "./Header";
+import DoctorList from "./components/DoctorList";
+import ServiceList from "./components/ServiceList";
+import AppointmentForm from "./components/AppointmentForm";
 
 function App() {
-  // Datos de ejemplo para doctores
   const doctors = [
-    { name: 'Dr. Juan Pérez', specialty: 'Cardiología', experience: 10 },
-    { name: 'Dra. María López', specialty: 'Neurología', experience: 8 },
-    { name: 'Dr. Carlos Gómez', specialty: 'Pediatría', experience: 12 },
+    { name: "Dr. Juan Pérez", specialty: "Cardiología", experience: 10 },
+    { name: "Dra. Ana López", specialty: "Pediatría", experience: 8 },
   ];
 
-  // Datos de ejemplo para servicios
-  const services = ['Cardiología', 'Neurología', 'Pediatría', 'Radiología'];
+  const services = ["Consulta General", "Rayos X", "Laboratorio Clínico"];
 
   return (
     <div>
-      <h1>Proyecto del Hospital</h1>
-
-      {/* Lista de doctores */}
-      {doctors && <DoctorList doctors={doctors} />}
-
-      {/* Lista de servicios */}
-      {services && <ServiceList services={services} />}
-
-      {/* Formulario de citas */}
-      <AppointmentForm />
+      <Header />
+      <main>
+        <h1>Bienvenido al Sistema del Hospital</h1>
+        <DoctorList doctors={doctors} />
+        <ServiceList services={services} />
+        <AppointmentForm />
+      </main>
     </div>
   );
 }
 
 export default App;
+

@@ -66,3 +66,32 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/*Header nav*/
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f4f4f4;
+  padding: 10px 20px;
+}
+
+header .logo img {
+  width: 50px;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+header nav ul li a:hover {
+  text-decoration: underline;
+}
