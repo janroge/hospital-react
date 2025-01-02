@@ -1,30 +1,28 @@
-import PropTypes from 'prop-types';
-import DoctorCard from './DoctorCard';
+import PropTypes from "prop-types";
+import DoctorCard from "./DoctorCard";
 
-function DoctorList({ doctors }) {
-  if (!doctors || doctors.length === 0) {
-    return <p>No hay doctores disponibles</p>;
-  }
+const DoctorList = ({ onSelectDoctor }) => {
+  const doctores = [
+    { nombre: "Dr. Juan Pérez", especialidad: "Cardiología", disponibilidad: ["Lunes", "Miércoles", "Viernes"] },
+    { nombre: "Dra. Ana Gómez", especialidad: "Neurología", disponibilidad: ["Martes", "Jueves"] },
+  ];
 
   return (
-    <div>
-      <h2>Lista de Doctores</h2>
-      {doctors.map((doctor, index) => (
-        <DoctorCard key={index} doctor={doctor} />
+    <div className="doctor-list">
+      {doctores.map((doctor, index) => (
+        <DoctorCard
+          key={index}
+          doctor={doctor}
+          onClick={() => onSelectDoctor(doctor)}
+        />
       ))}
     </div>
   );
-}
+};
 
-// Validación de props
+// Validación de las props
 DoctorList.propTypes = {
-  doctors: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      specialty: PropTypes.string.isRequired,
-      experience: PropTypes.number.isRequired,
-    })
-  ).isRequired,
+  onSelectDoctor: PropTypes.func.isRequired,
 };
 
 export default DoctorList;

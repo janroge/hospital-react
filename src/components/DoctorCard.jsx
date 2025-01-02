@@ -1,27 +1,21 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-function DoctorCard({ doctor }) {
-  // Verificar si doctor está definido
-  if (!doctor) {
-    return <p>Información del doctor no disponible</p>;
-  }
-
+const DoctorCard = ({ doctor, onClick }) => {
   return (
-    <div style={{ border: '1px solid #ccc', margin: '10px', padding: '10px' }}>
-      <h2>{doctor.name}</h2>
-      <p>Especialidad: {doctor.specialty}</p>
-      <p>Años de Experiencia: {doctor.experience}</p>
+    <div className="doctor-card" onClick={onClick}>
+      <h3>{doctor.nombre}</h3>
+      <p>{doctor.especialidad}</p>
     </div>
   );
-}
+};
 
-// Validación de props
+// Validación de las props
 DoctorCard.propTypes = {
   doctor: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    specialty: PropTypes.string.isRequired,
-    experience: PropTypes.number.isRequired,
-  }),
+    nombre: PropTypes.string.isRequired,
+    especialidad: PropTypes.string.isRequired,
+  }).isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default DoctorCard;
