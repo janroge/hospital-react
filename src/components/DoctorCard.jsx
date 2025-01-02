@@ -1,6 +1,4 @@
-import { memo } from "react";
 import PropTypes from "prop-types";
-import withClickLogger from "./withClickLogger"; // Importamos el HOC
 
 const DoctorCard = ({ doctor, onClick }) => {
   return (
@@ -19,7 +17,4 @@ DoctorCard.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
 
-// Aplica memo y el HOC con un nombre explícito
-const EnhancedDoctorCard = memo(withClickLogger(DoctorCard));
-
-export default EnhancedDoctorCard; // Exporta el componente con nombre explícito
+export default DoctorCard;

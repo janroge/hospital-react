@@ -1,8 +1,9 @@
-import PropTypes from "prop-types";
 import { useState } from "react";
-import { DoctorContext } from "./DoctorContext";
+import PropTypes from "prop-types";
+import { DoctorContext } from "./DoctorContext"; // Importa el contexto creado
 
-const DoctorProvider = ({ children }) => {
+// Proveedor del contexto
+export const DoctorProvider = ({ children }) => {
   const [selectedDoctor, setSelectedDoctor] = useState(null);
 
   return (
@@ -12,9 +13,7 @@ const DoctorProvider = ({ children }) => {
   );
 };
 
-export default DoctorProvider;
-
-// Validar la prop `children`
+// Validación de las props
 DoctorProvider.propTypes = {
-    children: PropTypes.node.isRequired,
-  };
+  children: PropTypes.node.isRequired,
+};

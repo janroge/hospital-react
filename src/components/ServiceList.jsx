@@ -1,26 +1,30 @@
 import PropTypes from "prop-types";
 
-function ServiceList({ services }) {
-  if (!services || services.length === 0) {
-    return <p>No hay servicios disponibles</p>;
-  }
-
+const ServiceList = ({ services = [] }) => {
   return (
-    <>
-      {/* Usamos Fragmentos para evitar un div extra */}
-      <h2>Lista de Servicios</h2>
-      <ul>
-        {services.map((service, index) => (
-          <li key={index}>{service}</li>
-        ))}
-      </ul>
-    </>
+    <div className="service-list">
+      <h2>Servicios</h2>
+      {services.length > 0 ? (
+        services.map((service, index) => (
+          <div key={index} className="service-card">
+            <h3>{service.nombre}</h3>
+            <p>{service.descripcion}</p>
+          </div>
+        ))
+      ) : (
+        <p>No hay servicios disponibles.</p>
+      )}
+    </div>
   );
-}
+};
 
-// Validación de props
 ServiceList.propTypes = {
-  services: PropTypes.arrayOf(PropTypes.string).isRequired,
+  services: PropTypes.arrayOf(
+    PropTypes.shape({
+      nombre: PropTypes.string.isRequired,
+      descripcion: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 export default ServiceList;

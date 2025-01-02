@@ -1,20 +1,21 @@
-import { memo } from "react";
 import { useContext } from "react";
 import { DoctorContext } from "./DoctorContext";
 import DoctorCard from "./DoctorCard";
 
 const DoctorList = () => {
   const { setSelectedDoctor } = useContext(DoctorContext);
+
   const doctores = [
-    { nombre: "Dr. Juan Pérez", especialidad: "Cardiología", disponibilidad: ["Lunes", "Miércoles", "Viernes"] },
-    { nombre: "Dra. Ana Gómez", especialidad: "Neurología", disponibilidad: ["Martes", "Jueves"] },
+    { id: 1, nombre: "Dr. Juan Pérez", especialidad: "Cardiología", disponibilidad: ["Lunes", "Miércoles", "Viernes"] },
+    { id: 2, nombre: "Dra. Ana Gómez", especialidad: "Neurología", disponibilidad: ["Martes", "Jueves"] },
   ];
 
   return (
     <div className="doctor-list">
-      {doctores.map((doctor, index) => (
+      <h2>Lista de Doctores</h2>
+      {doctores.map((doctor) => (
         <DoctorCard
-          key={index}
+          key={doctor.id}
           doctor={doctor}
           onClick={() => setSelectedDoctor(doctor)}
         />
@@ -23,4 +24,4 @@ const DoctorList = () => {
   );
 };
 
-export default memo(DoctorList); // Usamos memo
+export default DoctorList;

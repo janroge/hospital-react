@@ -1,4 +1,4 @@
 import { createContext } from "react";
 
-// Crear el contexto
+// Creación del contexto
 export const DoctorContext = createContext();
