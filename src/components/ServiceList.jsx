@@ -1,27 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 
-const ServiceList = React.memo(function ServiceList() {
-  const [servicios, setServicios] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  const fetchServicios = async () => {
-    try {
-      const response = await fetch("/api.json");
-      const data = await response.json();
-      setServicios(data.servicios);
-      setLoading(false);
-    } catch (error) {
-      console.error("Error al cargar los datos de los servicios:", error);
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchServicios();
-  }, []);
-
-  if (loading) {
-    return <p className="loading">Cargando servicios...</p>;
+const ServiceList = React.memo(function ServiceList({ servicios }) {
+  if (!servicios || servicios.length === 0) {
+    return <p>No hay servicios disponibles.</p>;
   }
 
   return (
@@ -38,5 +20,15 @@ const ServiceList = React.memo(function ServiceList() {
     </div>
   );
 });
+
+ServiceList.propTypes = {
+  servicios: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      nombre: PropTypes.string.isRequired,
+      descripcion: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};
 
 export default ServiceList;

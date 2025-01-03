@@ -1,18 +1,11 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
+import PropTypes from "prop-types";
 
-const Citas = React.memo(function CitasComponent() {
+const Citas = React.memo(function Citas({ onCitaAgendada }) {
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
   const [fecha, setFecha] = useState("");
   const [error, setError] = useState("");
-
-  // Referencia para el campo de entrada "Nombre"
-  const nombreRef = useRef(null);
-
-  // Efecto para enfocar automáticamente en el campo "Nombre"
-  useEffect(() => {
-    nombreRef.current.focus();
-  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,6 +14,7 @@ const Citas = React.memo(function CitasComponent() {
       return;
     }
     setError("");
+    onCitaAgendada({ nombre, email, fecha });
     alert(`Cita agendada para ${nombre} el ${fecha}`);
   };
 
@@ -32,7 +26,6 @@ const Citas = React.memo(function CitasComponent() {
         <label>
           Nombre:
           <input
-            ref={nombreRef} // Asignar la referencia al campo de entrada
             type="text"
             value={nombre}
             onChange={(e) => setNombre(e.target.value)}
@@ -60,6 +53,8 @@ const Citas = React.memo(function CitasComponent() {
   );
 });
 
-Citas.displayName = "CitasComponent";
+Citas.propTypes = {
+  onCitaAgendada: PropTypes.func.isRequired,
+};
 
 export default Citas;

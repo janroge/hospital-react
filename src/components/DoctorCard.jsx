@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const DoctorCard = React.memo(({ doctor, onClick }) => {
+const DoctorCard = React.memo(function DoctorCard({ doctor, onClick }) {
   console.log(`Renderizando DoctorCard: ${doctor.nombre}`); // Depuración
   return (
     <div className="doctor-card" onClick={onClick}>
@@ -10,8 +10,6 @@ const DoctorCard = React.memo(({ doctor, onClick }) => {
     </div>
   );
 });
-
-DoctorCard.displayName = "DoctorCard";
 
 DoctorCard.propTypes = {
   doctor: PropTypes.shape({
