@@ -225,3 +225,19 @@ footer p {
   margin: 0;
   color: #555;
 }
+
+/* Mensajes de carga */
+.loading {
+  font-size: 1.2rem;
+  color: #555;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Errores */
+.error {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+}

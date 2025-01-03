@@ -1,15 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DoctorCard from "./DoctorCard";
 
 const EquipoMedico = React.memo(function EquipoMedico() {
+  const [doctores, setDoctores] = useState([]);
   const [filtro, setFiltro] = useState("");
 
-  const doctores = [
-    { id: 1, nombre: "Dr. Juan Pérez", especialidad: "Cardiología" },
-    { id: 2, nombre: "Dra. Ana Gómez", especialidad: "Neurología" },
-    { id: 3, nombre: "Dr. Carlos López", especialidad: "Pediatría" },
-  ];
+  // Función para obtener los datos del equipo médico
+  const fetchDoctores = async () => {
+    try {
+      const response = await fetch("/api.json");
+      const data = await response.json();
+      setDoctores(data.equipoMedico);
+    } catch (error) {
+      console.error("Error al cargar los datos del equipo médico:", error);
+    }
+  };
 
+  // Cargar los datos al montar el componente
+  useEffect(() => {
+    fetchDoctores();
+  }, []);
+
+  // Filtrar doctores por especialidad
   const doctoresFiltrados = doctores.filter((doctor) =>
     filtro ? doctor.especialidad === filtro : true
   );

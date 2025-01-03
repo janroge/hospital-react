@@ -1,0 +1,13 @@
+{
+    "equipoMedico": [
+      { "id": 1, "nombre": "Dr. Juan Pérez", "especialidad": "Cardiología" },
+      { "id": 2, "nombre": "Dra. Ana Gómez", "especialidad": "Neurología" },
+      { "id": 3, "nombre": "Dr. Carlos López", "especialidad": "Pediatría" }
+    ],
+    "servicios": [
+      { "id": 1, "nombre": "Cardiología", "descripcion": "Cuidado especializado para el corazón." },
+      { "id": 2, "nombre": "Pediatría", "descripcion": "Atención médica para niños." },
+      { "id": 3, "nombre": "Traumatología", "descripcion": "Diagnóstico y tratamiento de lesiones." }
+    ]
+  }
+  
