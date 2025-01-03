@@ -1,80 +1,84 @@
-# Proyecto del Hospital - ReactJS
 
-Este proyecto es parte de la **Evaluación M4 - Ejercicio Práctico 2**, donde se implementa una aplicación React para manejar funcionalidades específicas relacionadas con un sistema hospitalario. Se realizaron los siguientes puntos según lo solicitado en el archivo PDF:
+# Hospital React Application
 
----
+## Descripción del Proyecto
 
-## Características Implementadas
-
-### 1. Manejo del DOM Virtual
-- Se utiliza React para gestionar eficientemente el DOM virtual.
-- Los componentes se renderizan dinámicamente según los datos.
-
-### 2. Referencias en React
-- Uso de referencias (`useRef`) para manipular directamente elementos del DOM.
-- Ejemplo: Enfocar automáticamente un campo en el formulario de citas.
-
-### 3. Fragmentos y Contexto
-- Uso de `<React.Fragment>` para evitar elementos innecesarios en el DOM.
-- Implementación de un contexto global (`DoctorContext`) para compartir datos entre componentes como la selección de un doctor.
-
-### 4. Verificación de Tipos con PropTypes
-- Validación de props en todos los componentes principales (`DoctorCard`, `DoctorList`, `AppointmentForm`, etc.).
-- PropTypes asegura que los datos enviados a los componentes tengan los tipos correctos.
-
-### 5. Componentes de Orden Superior (HOC) y Portales
-- Creación de un HOC (`withClickLogger`) para registrar clics en componentes.
-- Uso de portales (`Modal`) para mostrar un modal con detalles del doctor seleccionado.
-
-### 6. Optimización de Rendimiento
-- Uso de `React.memo` para evitar renders innecesarios en componentes clave como `DoctorCard` y `DoctorList`.
-- Implementación del `Profiler` para medir tiempos de renderización y detectar cuellos de botella.
-
----
+Este proyecto es una aplicación de gestión de un hospital construida con **ReactJS**. Incluye funcionalidades como:
+- Visualización de servicios destacados.
+- Listado del equipo médico con filtrado por especialidad.
+- Formulario para agendar citas.
+- Uso de tecnologías avanzadas como Context API, Profiler, PropTypes y simulación de APIs.
 
 ## Estructura del Proyecto
 
-```plaintext
-src/
-├── components/
-│   ├── AppointmentForm.jsx  # Formulario para agendar citas
-│   ├── DoctorCard.jsx       # Tarjetas individuales de doctores
-│   ├── DoctorContext.jsx    # Contexto global para la aplicación
-│   ├── DoctorDetail.jsx     # Detalles del doctor seleccionado
-│   ├── DoctorList.jsx       # Listado de doctores
-│   ├── DoctorProvider.jsx   # Proveedor del contexto
-│   ├── Modal.jsx            # Modal implementado con Portales
-│   ├── ServiceList.jsx      # Listado de servicios
-│   └── withClickLogger.jsx  # HOC para registrar clics
-│
-├── App.jsx                  # Componente principal
-├── App.css                  # Estilos principales
-├── index.css                # Estilos globales
-├── main.jsx                 # Punto de entrada
-└── Modal.css                # Estilos para el modal
 ```
-
----
+hospital-react/
+├── public/
+│   ├── api.json               # Simulación de API REST con datos de doctores y servicios
+│   └── index.html             # Archivo principal de HTML
+├── src/
+│   ├── assets/                # Recursos estáticos (imágenes, etc.)
+│   │   └── react.svg          # Imagen de ejemplo (puede ser eliminada si no se usa)
+│   ├── components/            # Componentes principales de la aplicación
+│   │   ├── AppointmentForm.jsx
+│   │   ├── DoctorCard.jsx
+│   │   ├── DoctorContext.jsx
+│   │   ├── DoctorDetail.jsx
+│   │   ├── DoctorList.jsx
+│   │   ├── DoctorProvider.jsx
+│   │   ├── Modal.jsx
+│   │   ├── Modal.css
+│   │   ├── ServiceList.jsx
+│   │   └── withClickLogger.jsx # Puede eliminarse si no se utiliza
+│   ├── App.css                # Estilos globales
+│   ├── App.jsx                # Componente principal
+│   ├── Header.jsx             # Encabezado del sitio
+│   ├── index.css              # Estilos generales
+│   ├── main.jsx               # Punto de entrada de React
+│   └── README.md              # Archivo de documentación
+├── .gitignore                 # Archivos y carpetas ignorados por Git
+├── package.json               # Dependencias y scripts del proyecto
+├── vite.config.js             # Configuración de Vite
+└── ...
+```
 
 ## Instalación y Ejecución
 
-1. **Clonar el repositorio:**
+Sigue estos pasos para ejecutar el proyecto en tu entorno local:
+
+1. Clona el repositorio:
    ```bash
-   git clone https://github.com/janroge/hospital-react.git
+   git clone <url-del-repositorio>
    cd hospital-react
    ```
 
-2. **Instalar dependencias:**
+2. Instala las dependencias:
    ```bash
    npm install
    ```
 
-3. **Iniciar el servidor de desarrollo:**
+3. Inicia el servidor de desarrollo:
    ```bash
    npm run dev
    ```
 
-4. **Abrir la aplicación:**
-   - URL: `http://localhost:5173`
+4. Abre la aplicación en tu navegador en [http://localhost:5173](http://localhost:5173).
 
----
+## Funcionalidades Implementadas
+
+- **Simulación de API REST:** Los datos del equipo médico y servicios son cargados desde un archivo JSON simulado.
+- **Context API:** Manejo de estado global para datos del equipo médico.
+- **PropTypes:** Validación de tipos en todos los componentes.
+- **Profiler:** Optimización de rendimiento para componentes clave.
+- **Hooks:** Uso de `useState`, `useEffect`, y referencias (`useRef`).
+
+## Dependencias Principales
+
+- **ReactJS:** Biblioteca principal para construir la interfaz de usuario.
+- **React Router Dom:** Manejo de rutas en la aplicación.
+- **Vite:** Herramienta de construcción rápida para React.
+- **PropTypes:** Validación de tipos de datos.
+
+## Licencia
+
+Este proyecto está bajo la licencia MIT.
