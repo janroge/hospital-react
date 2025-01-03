@@ -1,7 +1,7 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import DoctorCard from "./DoctorCard";
 
-const EquipoMedico = () => {
+const EquipoMedico = React.memo(function EquipoMedico() {
   const [filtro, setFiltro] = useState("");
 
   const doctores = [
@@ -15,7 +15,7 @@ const EquipoMedico = () => {
   );
 
   return (
-    <div className="equipo-medico">
+    <>
       <h1>Equipo Médico</h1>
       <label>
         Filtrar por especialidad:
@@ -31,8 +31,8 @@ const EquipoMedico = () => {
           <DoctorCard key={doctor.id} doctor={doctor} onClick={() => {}} />
         ))}
       </div>
-    </div>
+    </>
   );
-};
+});
 
 export default EquipoMedico;

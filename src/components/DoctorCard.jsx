@@ -1,13 +1,18 @@
+import React from "react";
 import PropTypes from "prop-types";
 
-const DoctorCard = ({ doctor, onClick }) => {
+const DoctorCard = React.memo(({ doctor, onClick }) => {
   return (
-    <div className="doctor-card" onClick={onClick}>
-      <h3>{doctor.nombre}</h3>
-      <p>{doctor.especialidad}</p>
-    </div>
+    <>
+      <div className="doctor-card" onClick={onClick}>
+        <h3>{doctor.nombre}</h3>
+        <p>{doctor.especialidad}</p>
+      </div>
+    </>
   );
-};
+});
+
+DoctorCard.displayName = "DoctorCard";
 
 DoctorCard.propTypes = {
   doctor: PropTypes.shape({

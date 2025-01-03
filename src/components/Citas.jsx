@@ -1,6 +1,6 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
-const Citas = () => {
+const Citas = React.memo(function CitasComponent() {
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
   const [fecha, setFecha] = useState("");
@@ -17,7 +17,7 @@ const Citas = () => {
   };
 
   return (
-    <div className="citas">
+    <>
       <h1>Agendar Cita</h1>
       <form onSubmit={handleSubmit}>
         {error && <p className="error">{error}</p>}
@@ -35,8 +35,8 @@ const Citas = () => {
         </label>
         <button type="submit">Agendar</button>
       </form>
-    </div>
+    </>
   );
-};
+});
 
 export default Citas;
