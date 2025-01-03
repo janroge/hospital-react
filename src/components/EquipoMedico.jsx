@@ -4,27 +4,31 @@ import DoctorCard from "./DoctorCard";
 const EquipoMedico = React.memo(function EquipoMedico() {
   const [doctores, setDoctores] = useState([]);
   const [filtro, setFiltro] = useState("");
+  const [loading, setLoading] = useState(true);
 
-  // Función para obtener los datos del equipo médico
   const fetchDoctores = async () => {
     try {
       const response = await fetch("/api.json");
       const data = await response.json();
       setDoctores(data.equipoMedico);
+      setLoading(false);
     } catch (error) {
       console.error("Error al cargar los datos del equipo médico:", error);
+      setLoading(false);
     }
   };
 
-  // Cargar los datos al montar el componente
   useEffect(() => {
     fetchDoctores();
   }, []);
 
-  // Filtrar doctores por especialidad
   const doctoresFiltrados = doctores.filter((doctor) =>
     filtro ? doctor.especialidad === filtro : true
   );
+
+  if (loading) {
+    return <p className="loading">Cargando equipo médico...</p>;
+  }
 
   return (
     <>

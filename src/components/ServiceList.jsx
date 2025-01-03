@@ -2,22 +2,27 @@ import React, { useState, useEffect } from "react";
 
 const ServiceList = React.memo(function ServiceList() {
   const [servicios, setServicios] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  // Función para obtener los datos de los servicios
   const fetchServicios = async () => {
     try {
       const response = await fetch("/api.json");
       const data = await response.json();
       setServicios(data.servicios);
+      setLoading(false);
     } catch (error) {
       console.error("Error al cargar los datos de los servicios:", error);
+      setLoading(false);
     }
   };
 
-  // Cargar los datos al montar el componente
   useEffect(() => {
     fetchServicios();
   }, []);
+
+  if (loading) {
+    return <p className="loading">Cargando servicios...</p>;
+  }
 
   return (
     <div className="service-list">
